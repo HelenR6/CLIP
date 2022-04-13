@@ -133,6 +133,7 @@ def load(name: str, device: Union[str, torch.device] = "cuda" if torch.cuda.is_a
                 warnings.warn(f"File {model_path} is not a JIT archive. Loading as a state dict instead")
                 jit = False
             state_dict = torch.load(opened_file, map_location="cpu")
+            print(state_dict)
 
     if not jit:
         model = build_model(state_dict or model.state_dict()).to(device)
